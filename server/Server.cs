@@ -26,7 +26,7 @@ public class ClockWorker(IHubContext<ClockHub> hubContext) : BackgroundService
         while (!stoppingToken.IsCancellationRequested)
         {
             await _hubContext.Clients.All.SendAsync("ReceiveTime", DateTime.Now.ToString("h:mm:ss tt"), cancellationToken: stoppingToken);
-            await Task.Delay(5000, stoppingToken);
+            await Task.Delay(60000, stoppingToken);
         }
     }
 }
